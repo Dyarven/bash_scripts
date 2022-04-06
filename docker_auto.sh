@@ -3,7 +3,7 @@ set -e
 
 #docker e docker-compose instalación auto
 docker_autoinst() {
-  #script inst docker linux param.
+  #instalaciónn de docker linux param.
   curl -fsSL https://get.docker.com | bash
   #compose
   $dockerPath="/usr/local/bin/docker-compose"
