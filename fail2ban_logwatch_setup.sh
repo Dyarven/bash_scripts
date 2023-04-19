@@ -9,7 +9,7 @@ systemctl enable fail2ban
 LOGWATCH_CONF="/etc/logwatch/conf/logwatch.conf"
 LOGWATCH_CRON="/etc/cron.daily/00logwatch"
 #specify the discord channel ID as well on the webhook
-DISCORD="https://discord.com/api/webhooks/YOUR_DISCORD_WEBHOOK_URL_HERE"
+DISCORD="https://discord.com/api/webhooks/xxx"
 
 #logwatch alerts on discord
 sed -i "s/^MailTo.*/MailTo = /" $LOGWATCH_CONF
