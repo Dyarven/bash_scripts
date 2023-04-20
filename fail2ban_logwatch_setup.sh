@@ -3,6 +3,12 @@ apt update && apt install -y fail2ban logwatch
 
 #configuration
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+sed -i '/\[sshd\]/a enabled = true' /etc/fail2ban/jail.local
+sed -i '/\[sshd\]/a port = 3022' /etc/fail2ban/jail.local
+sed -i '/\[sshd\]/a filter = sshd' /etc/fail2ban/jail.local
+sed -i '/\[sshd\]/a maxretry = 5' /etc/fail2ban/jail.local
+sed -i '/\[sshd\]/a bantime = 2h' /etc/fail2ban/jail.local
+
 systemctl start fail2ban
 systemctl enable fail2ban
 
@@ -16,7 +22,7 @@ sed -i "s/^MailTo.*/MailTo = /" $LOGWATCH_CONF
 sed -i "/^mailer =/a Format = html" $LOGWATCH_CONF
 sed -i "/^mailer =/a Output = stdout" $LOGWATCH_CONF
 sed -i "/^mailer =/a MailFrom = logwatch@$HOSTNAME" $LOGWATCH_CONF
-sed -i "/^mailer =/a MailSubject = Logwatch for $HOSTNAME" $LOGWATCH_CONF
+sed -i "/^mailer =/a MailSubject = Logwatch en servidor $HOSTNAME" $LOGWATCH_CONF
 echo "MailTo = $DISCORD" >> $LOGWATCH_CONFIG
 
 #test webhook
