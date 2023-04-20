@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-#automated docker & docker-compose install
+# Automated docker & docker-compose install
 docker_autoinst() {
   #instalaciónn de docker linux param.
   curl -fsSL https://get.docker.com | bash
@@ -14,12 +14,12 @@ docker_autoinst() {
 
 docker_autoinst
 
-#enables docker service and adds user to group
+# Enables docker service and adds user to group
 chmod +x /usr/local/bin/docker-compose
 systemctl enable docker && systemctl start docker
 usermod -aG docker $(whoami)
 
-#sets up portainer agent
+# Sets up portainer agent
 docker volume create portainer_data
 docker run -d --name=portainer --restart=always \
  -p 8000:8000 -p 9000:9000 \
