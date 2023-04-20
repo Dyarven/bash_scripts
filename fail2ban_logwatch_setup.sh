@@ -21,7 +21,7 @@ sed -i "/^mailer =/a Output = stdout" $LOGWATCH_CONF
 sed -i "/^mailer =/a MailFrom = logwatch@$HOSTNAME" $LOGWATCH_CONF
 sed -i "/^mailer =/a MailSubject = Logwatch en servidor $HOSTNAME" $LOGWATCH_CONF
 #solo avisar ante alertas criticas
-sed -i "/^mailer =/a Threshold = 5" $LOGWATCH_CONF 
+sed -i "/^mailer =/a Threshold = 2" $LOGWATCH_CONF 
 echo "MailTo = $DISCORD" >> $LOGWATCH_CONF
 
 #test webhook
