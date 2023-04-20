@@ -20,7 +20,7 @@ sed -i "/^mailer =/a Format = html" $LOGWATCH_CONF
 sed -i "/^mailer =/a Output = stdout" $LOGWATCH_CONF
 sed -i "/^mailer =/a MailFrom = logwatch@$HOSTNAME" $LOGWATCH_CONF
 sed -i "/^mailer =/a MailSubject = Logwatch en servidor $HOSTNAME" $LOGWATCH_CONF
-#solo avisar ante alertas criticas
+#only send critical alerts
 sed -i "/^mailer =/a Threshold = 2" $LOGWATCH_CONF 
 echo "MailTo = $DISCORD" >> $LOGWATCH_CONF
 
