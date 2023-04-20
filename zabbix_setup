@@ -2,15 +2,14 @@
 
 #!/bin/bash
 
-# Install required packages
 apt-get update && apt-get install -y postgresql postgresql-contrib zabbix-server-pgsql zabbix-frontend-php zabbix-agent
 
-# Create Zabbix database and user
+# zabbix db
 su - postgres -c "psql -c \"create database zabbix;\""
 su - postgres -c "psql -c \"create user zabbix with password 'zabbix';\""
 su - postgres -c "psql -c \"grant all privileges on database zabbix to zabbix;\""
 
-# Import Zabbix database schema
+# Import database schema
 zcat /usr/share/doc/zabbix-server-pgsql*/create.sql.gz | su - postgres -c "psql zabbix"
 
 # Configure Zabbix server
@@ -20,11 +19,9 @@ sed -i "s/^# DBPassword=/DBPassword=zabbix/" /etc/zabbix/zabbix_server.conf
 systemctl restart zabbix-server
 
 # Prompt user to enter a new password for the Zabbix admin user
-read -s -p "Enter a new password for the Zabbix admin user: " ZABBIX_ADMIN_PASSWORD
-
-# Update Zabbix admin user password
+read -s -p "Enter a new password for the Zabbix admin user: " ADM_PW
 zabbix_admin_id=$(sudo -u postgres psql -d zabbix -c "select userid from users where alias='Admin';" | awk 'NR==3')
-sudo -u postgres psql -d zabbix -c "update users set passwd='\$5\$salty\$${ZABBIX_ADMIN_PASSWORD}' where userid=${zabbix_admin_id};"
+sudo -u postgres psql -d zabbix -c "update users set passwd='\$5\$salty\$${ADM_PW}' where userid=${zabbix_admin_id};"
 
 # Restart Zabbix server to apply changes
 systemctl restart zabbix-server
