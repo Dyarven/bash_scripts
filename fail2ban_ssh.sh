@@ -12,6 +12,6 @@ systemctl enable fail2ban && systemctl start fail2ban
 # Keepalive
 echo -e "#!/bin/bash\nsystemctl is-active --quiet fail2ban || systemctl restart fail2ban" > /root/scripts/restart_fail2ban.sh
 chmod +x /root/scripts/restart_fail2ban.sh
-(crontab -l 2>/dev/null; echo "0 0 * * * /root/scripts/restart_fail2ban.sh") | crontab -
+(crontab -l 2>/dev/null; echo "0 2 * * * /root/scripts/restart_fail2ban.sh") | crontab -
 
 
