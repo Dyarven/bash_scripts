@@ -60,4 +60,4 @@ Restart=always
 WantedBy=multi-user.target
 EOL
 
-systemctl daemon-reload
+sudo systemctl daemon-reload
