@@ -4,7 +4,7 @@
 # It will create the necessary files and folders and ask you to set up an admin password to access the server.
 # After that you can just shut it down and use "systemctl enable zomboid-server" and "systemctl start zomboid-server" to run it. 
 # Default server takes 8GB of RAM.
-# This script asumes you opened ports 16261 and 16262 tcp/udp on your firewall
+# This script asumes you opened ports 16261 and 16262 tcp/udp on your firewall and forwarded in the oracle cloud console for your vm instance
 
 # install java / dependencies
 sudo apt update && sudo apt full-upgrade -y
