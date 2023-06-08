@@ -32,8 +32,7 @@ sudo systemctl restart systemd-binfmt
 cd ../..
 
 # steamcmd setup
-mkdir steamcmd
-cd steamcmd
+mkdir steamcmd && cd steamcmd
 curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
 
 # update steamcmd
