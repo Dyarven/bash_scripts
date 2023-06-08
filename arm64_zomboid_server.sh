@@ -1,5 +1,5 @@
 #!/bin/bash
-###### SET UP A PROJECT ZOMBOID SERVER ON ORACLE CLOUD'S AMPERE A1 VM INSTANCE ######
+###### SETS UP A PROJECT ZOMBOID SERVER ON ORACLE CLOUD'S AMPERE A1 VM INSTANCE ######
 ###### IMPORTANT ######
 # The first time you run the server it must be manually launching it from start-server.sh.
 # It will create the necessary files and folders and ask you to set up an admin password to access the server.
