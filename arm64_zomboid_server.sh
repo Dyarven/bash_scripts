@@ -6,7 +6,7 @@
 # After that you can just shut it down and use "systemctl enable zomboid-server" and "systemctl start zomboid-server" to run it. 
 # Default server takes 8GB of RAM.
 # This script asumes you opened ports 16261 and 16262 tcp/udp on your firewall and forwarded them in the oracle cloud console for your vm instance
-# Notice we are using /opt/zomboid-server as a dir but zomboid's starting script will generate files in /root. It's split in two directories but it works and you can set startup parameters.
+# Notice we are using /opt/zomboid-server as a dir but zomboid's starting script will generate files in /root. Files will be split in two directories but it works and you can set startup parameters.
 # This is a workaround I found for the "couldn't determine 32/64 bit of java" issues.
 
 # install java / dependencies
