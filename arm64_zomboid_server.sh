@@ -48,7 +48,7 @@ sudo chown -R $USER:$USER /opt/zomboid-server/
 ./steamcmd.sh +@sSteamCmdForcePlatformType linux +login anonymous +force_install_dir /opt/zomboid-server/ +app_update 380870 validate +quit > /dev/null
 
 # sets up zomboid as a systemd service
-sudo tee /etc/systemd/system/zomboid-server2.service > /dev/null <<EOL
+sudo tee /etc/systemd/system/zomboid-server.service > /dev/null <<EOL
 [Unit]
 Description=Zomboid
 After=network.target
