@@ -1,5 +1,5 @@
 #!/bin/bash
-apt update && apt install -y fail2ban logwatch
+apt update && apt install -y fail2ban
 
 # Configuration
 echo -n > /etc/fail2ban/jail.local
