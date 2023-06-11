@@ -50,7 +50,7 @@ sudo chown -R $USER:$USER /opt/zomboid-server/
 # sets up zomboid as a systemd service
 sudo tee /etc/systemd/system/zomboid-server.service > /dev/null <<EOL
 [Unit]
-Description=Zomboid
+Description=Servidor de Zomboid
 After=network.target
 
 [Service]
