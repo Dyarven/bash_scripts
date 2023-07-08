@@ -6,7 +6,7 @@
 # After that you can just shut it down and use "systemctl enable zomboid-server" and "systemctl start zomboid-server" to run it. 
 # Default server takes 8GB of RAM.
 # This script asumes you opened ports 16261 and 16262 tcp/udp on your firewall and forwarded them in the oracle cloud console for your vm instance
-# Notice we are using /opt/zomboid-server as a dir but zomboid's starting script will generate files in /root. Files will be split in two directories but it works and you can set startup parameters.
+# Notice we are using /opt/zomboid-server as a dir but zomboid's starting script will generate files in the homedir of the user. Files will be split in two directories but it works and you can set startup parameters.
 # This is a workaround I found for the "couldn't determine 32/64 bit of java" issues.
 
 # install java / dependencies
@@ -46,6 +46,10 @@ curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.g
 sudo mkdir -p /opt/zomboid-server/
 sudo chown -R $USER:$USER /opt/zomboid-server/
 ./steamcmd.sh +@sSteamCmdForcePlatformType linux +login anonymous +force_install_dir /opt/zomboid-server/ +app_update 380870 validate +quit > /dev/null
+
+# create symlinks for the files on the home of the user so that we can access it all from our server folder
+find ~ -type f -mmin -60 -exec ln -s {} /opt/zomboid-server/ \;
+find ~ -type d -mmin -60 -exec ln -s {} /opt/zomboid-server/ \;
 
 # sets up zomboid as a systemd service
 sudo tee /etc/systemd/system/zomboid-server.service > /dev/null <<EOL
