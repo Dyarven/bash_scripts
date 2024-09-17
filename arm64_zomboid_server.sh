@@ -68,3 +68,4 @@ WantedBy=multi-user.target
 EOL
 
 sudo systemctl daemon-reload
+source /usr/share/bash-completion/completions/systemctl
